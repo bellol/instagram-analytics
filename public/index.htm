@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+	<script src="js/instajam.js"></script>
+	<script src="js/script.js"></script>
+
+</head>
+
+<header ng-controller="navController">
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">Instagrammalytics</a>
+			</div>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li ng-if="api.authenticated"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+				<li ng-if="api.authenticated"><a href="#media"><i class="fa fa-picture-o"></i> Media</a></li>
+				<li ng-if="api.authenticated"><a href="#" ng-click="api.deauthenticate()"><i class="fa fa-sign-out"></i> Logout</a></li>
+				<li ng-if="!api.authenticated"><a href="{{api.authUrl}}"><i class="fa fa-sign-in"></i> Sign In</a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+<body>
+	<div id="main" ng-controller="mainController">
+
+		<div ng-view ng-if="api.authenticated"></div>
+		<div ng-if="!api.authenticated" class="container"><h1>Please log in to continue.</h1></div>
+
+	</div>
+
+</body>
+</html>

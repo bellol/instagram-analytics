@@ -1,0 +1,35 @@
+<div class="jumbotron text-center">
+	
+	<img src="{{self.profile_picture}}">
+	<h1>{{self.username}}</h1>
+	<p>{{self.bio}}</p>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">{{self.counts.media}}</div>
+			<div class="col-md-4">{{self.counts.followed_by}}</div>
+			<div class="col-md-4">{{self.counts.follows}}</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">posts</div>
+			<div class="col-md-4">followers</div>
+			<div class="col-md-4">following</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+
+	<div class="row"><center>
+		<div class="col-md-6"><h4>Following who aren't following you back: {{outgoing.length}}</h4></div>
+		<div class="col-md-6"><h4>Followers you aren't following back: {{incoming.length}}</h4></div>
+		</center>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-6"><li class="list-group-item" ng-repeat="user in outgoing"><img class="img-circle" width="30" src="{{user.profile_picture}}"> {{user.username}}</li></div>
+		<div class="col-md-6"><li class="list-group-item" ng-repeat="user in incoming"><img class="img-circle" width="30" src="{{user.profile_picture}}"> {{user.username}}</li></div>
+	</div>
+
+</div>
+
+
